@@ -51,5 +51,7 @@ array = sortBy(array, 'rank');
 const newRank = dropTargetRank(array, foo, bar, { log: true });
 
 // side effect from log: true
-console.log(newRank); // outputs 2.5, placing Foo between Bar and Baz
+if (newRank) { // always check value, will return null on error
+  console.log(newRank); // outputs 2.5, placing Foo between Bar and Baz
+}
 ```

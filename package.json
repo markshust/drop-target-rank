@@ -1,6 +1,6 @@
 {
   "name": "drop-target-rank",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily calculate the new rank value for drag-drop items given source & target values",
   "repository": {
     "type": "git",

@@ -13,7 +13,8 @@ const dropTargetRank = (array, source, target, { key = '_id', log = false } = {}
 
   switch (true) {
     case sourceIndex === -1 || targetIndex === -1:
-      throw new Error('source and target must be objects within array'); // eslint-disable-line
+      if (log) console.log('source or target not found within array'); // eslint-disable-line no-console
+      return null;
       break;
     case sourceIndex > targetIndex && targetIndex === firstIndex:
       // drag item up location to first
@@ -36,6 +37,8 @@ const dropTargetRank = (array, source, target, { key = '_id', log = false } = {}
       newRank = (array[targetIndex].rank + array[targetIndex + 1].rank) / 2;
       break;
   }
+
+  if (log) console.log('new rank', newRank);
 
   return newRank;
 };

@@ -68,15 +68,36 @@ describe('sum', () => {
     expect(result).to.be.equal(2.5);
   });
 
-  it('source and target must be objects within array', async () => {
+  it('return null if source or target not found within array', async () => {
+    let result;
+
     array = sortBy(array, 'rank');
 
-    expect(() => dropTargetRank(array, '123', '456')).to.throw(Error);
-    expect(() => dropTargetRank(array, foo, '456')).to.throw(Error);
-    expect(() => dropTargetRank(array, '456', foo)).to.throw(Error);
-    expect(() => dropTargetRank(array, foo, qux)).to.throw(Error);
-    expect(() => dropTargetRank([], foo, bar)).to.throw(Error);
-    expect(() => dropTargetRank(array, {}, bar)).to.throw(Error);
-    expect(() => dropTargetRank(array, foo, {})).to.throw(Error);
+    result = dropTargetRank(array, '123', '456');
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, foo, '456');
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, '123', '456');
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, foo, '456');
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, '456', foo);
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, foo, qux);
+    expect(result).to.be.null;
+
+    result = dropTargetRank([], foo, bar);
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, {}, bar);
+    expect(result).to.be.null;
+
+    result = dropTargetRank(array, foo, {});
+    expect(result).to.be.null;
   });
 });
