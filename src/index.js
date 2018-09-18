@@ -1,18 +1,25 @@
 import findIndex from 'lodash.findindex';
+import sortBy from 'lodash.sortby';
 
 const dropTargetRank = (
   array,
   source,
   target,
-  { key = '_id', log = false } = {}
+  { key = '_id', log = false, rank = 'rank' } = {}
 ) => {
   let newRank = 0;
   const firstIndex = 0;
   const lastIndex = array.length - 1;
   const sourceObj = {};
   const targetObj = {};
+
+  // Let's make sure our objects only contain these keys and no other keys
   sourceObj[key] = source[key];
   targetObj[key] = target[key];
+
+  // Sort array by rank before trying to determine new rank
+  array = sortBy(array, rank);
+
   const sourceIndex = findIndex(array, sourceObj);
   const targetIndex = findIndex(array, targetObj);
 

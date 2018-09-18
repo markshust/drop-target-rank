@@ -22,7 +22,7 @@ const qux = {
   name: 'Qux',
   rank: 4,
 };
-let array = [foo, bar, baz];
+let array = [foo, baz, bar];
 
 describe('sum', () => {
   it('item up location to first', async () => {

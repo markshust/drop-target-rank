@@ -1,6 +1,6 @@
 {
   "name": "drop-target-rank",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Easily calculate the new rank value for drag-drop items given source & target values",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "prettier": "1.14.2"
   },
   "dependencies": {
-    "lodash.findindex": "^4.6.0"
+    "lodash.findindex": "^4.6.0",
+    "lodash.sortby": "^4.7.0"
   }
 }

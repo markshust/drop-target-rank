@@ -16,6 +16,7 @@ npm install drop-target-rank
 * `options`
     * `key` (default: `'_id'`): unique property id of the rank object
     * `log` (default: `false`): enable logging to console
+    * `rank` (default: `'rank'`): ranking property
 
 ## Usage
 
@@ -40,11 +41,8 @@ _id: 'NDwXkDQQQHsRENzR9',
   name: 'Baz',
   rank: 3,
 };
-let array = [foo, bar, baz];
-
-// The array should also be sorted by rank before trying to determine the new rank
-// lodash.sortBy method is ideal for this
-array = sortBy(array, 'rank');
+// Array can be in any order (as of version 1.1.0)
+let array = [foo, baz, bar];
 
 // Then call dropTargetRank with array, source, target, and optional params
 // This method calculates the new source rank value automatically
