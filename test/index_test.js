@@ -38,6 +38,9 @@ describe('sum', () => {
   it('item down location to last', async () => {
     let result = dropTargetRank(array, foo, baz);
     expect(result).to.be.equal(4);
+
+    result = dropTargetRank(array, bar, baz);
+    expect(result).to.be.equal(4);
   });
 
   it('item down location', async () => {
