@@ -1,8 +1,7 @@
 import { expect } from 'chai';
-import { sum } from '../';
+import dropTargetRank from '../src';
+
 const { describe, it } = global;
-import dropTargetRank from '../index';
-import sortBy from 'lodash.sortby';
 const foo = {
   _id: '28NKN243Qvzbp4NBs',
   name: 'Foo',
@@ -13,12 +12,12 @@ const bar = {
   name: 'Bar',
   rank: 2,
 };
-const baz ={
+const baz = {
   _id: 'NDwXkDQQQHsRENzR9',
   name: 'Baz',
   rank: 3,
 };
-const qux ={
+const qux = {
   _id: 'aML3Q45nqyaJc4Qes',
   name: 'Qux',
   rank: 4,
@@ -27,59 +26,27 @@ let array = [foo, bar, baz];
 
 describe('sum', () => {
   it('item up location to first', async () => {
-    let result;
-
-    array = sortBy(array, 'rank');
-
-    result = dropTargetRank(array, baz, foo);
-    expect(result).to.be.equal(0.5);
-
-    result = dropTargetRank(array, bar, foo);
+    let result = dropTargetRank(array, baz, foo);
     expect(result).to.be.equal(0.5);
   });
 
   it('item up location', async () => {
-    let result;
-
-    array = sortBy(array, 'rank');
-
-    result = dropTargetRank(array, baz, bar);
+    let result = dropTargetRank(array, baz, bar);
     expect(result).to.be.equal(1.5);
   });
 
   it('item down location to last', async () => {
-    let result;
-
-    array = sortBy(array, 'rank');
-
-    result = dropTargetRank(array, foo, baz);
-    expect(result).to.be.equal(4);
-
-    result = dropTargetRank(array, bar, baz);
+    let result = dropTargetRank(array, foo, baz);
     expect(result).to.be.equal(4);
   });
 
   it('item down location', async () => {
-    let result;
-
-    array = sortBy(array, 'rank');
-
-    result = dropTargetRank(array, foo, bar);
+    let result = dropTargetRank(array, foo, bar);
     expect(result).to.be.equal(2.5);
   });
 
   it('return null if source or target not found within array', async () => {
-    let result;
-
-    array = sortBy(array, 'rank');
-
-    result = dropTargetRank(array, '123', '456');
-    expect(result).to.be.null;
-
-    result = dropTargetRank(array, foo, '456');
-    expect(result).to.be.null;
-
-    result = dropTargetRank(array, '123', '456');
+    let result = dropTargetRank(array, '123', '456');
     expect(result).to.be.null;
 
     result = dropTargetRank(array, foo, '456');

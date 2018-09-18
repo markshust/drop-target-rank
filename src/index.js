@@ -1,6 +1,11 @@
 import findIndex from 'lodash.findindex';
 
-const dropTargetRank = (array, source, target, { key = '_id', log = false } = {}) => {
+const dropTargetRank = (
+  array,
+  source,
+  target,
+  { key = '_id', log = false } = {}
+) => {
   let newRank = 0;
   const firstIndex = 0;
   const lastIndex = array.length - 1;
