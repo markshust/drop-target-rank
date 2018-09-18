@@ -14,7 +14,7 @@
   "scripts": {
     "build": "neutrino build",
     "lint": "prettier --single-quote --trailing-comma es5 --write \"{src,test}/**/*.js\"",
-    "test": "neutrino test --use @neutrinojs/node @neutrinojs/mocha"
+    "test": "neutrino test"
   },
   "keywords": [],
   "author": "",
